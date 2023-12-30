@@ -90,7 +90,7 @@ function Navbar() {
       </nav>
       {toggle && (
         <div
-          className="p-10 ml-20 z-10 duration-1000 delay-300 ease-in-out pt-20 fixed bg-white w-[100vw] h-[100vh]"
+          className="p-10 z-10 ml-20 duration-1000 delay-300 ease-in-out pt-20 fixed bg-white w-[100vw] h-[100vh]"
         >
           <div className="">
             <ul className={`flex-col flex gap-4`}>

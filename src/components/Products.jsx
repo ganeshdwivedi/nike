@@ -8,7 +8,7 @@ import urlFor from '../../ImgUrl'
 const Products = () => {
     const [product, setProduct] = useState([]);
     const getProducts = async () => {
-        const query = `*[_type == 'product']{
+        const query = `*[_type == 'product'][1..5]{
              images,
                 _id,
                 title,

@@ -20,7 +20,7 @@ const ShopByCat = () => {
         GetCategory()
     }, [])
 
-    const ShowCategory = product.map((item) => <div className='py-3 px-1'>
+    const ShowCategory = product.map((item) => <div key={item._id} className='py-3 px-1'>
         <div className='w-[300px] md:w-[389px] overflow-hidden'><img className='object-cover' src={urlFor(item.images[0])} alt={item.title} /></div>
         <div>
             <h3 className='text-sm font-medium my-1'>{item.title}</h3>
