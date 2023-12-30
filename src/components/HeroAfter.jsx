@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroAfter = () => {
     return (
-        <div className="flex flex-col md:flex-row p-5 overflow-hidden">
+        <div className="flex z-0 flex-col md:flex-row p-5 overflow-hidden">
             <div className="w-full sm:bg-center md:w-1/2 h-[70vh] md:h-[100vh] bg-cover relative mx-1 bg-[url('https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_700,c_limit/1d90ad38-12ec-4fda-a571-610e9e68ed89/nike-just-do-it.png')]">
                 <div className="absolute bottom-5 m-6">
                     <p>Dropping This Week on the Nike App</p>
