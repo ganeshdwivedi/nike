@@ -90,7 +90,7 @@ function ReviewProduct({ params }) {
               />
             </div>
 
-            <div className="w-[90vw] order-3 md:mx-16 md:w-[20vw]">
+            <div className="w-[90vw] order-3 my-5 md:mx-16 md:w-[20vw]">
 
               <h1 className="text-2xl">{product?.title}</h1>
               <h1 className="text-base">{product?.category}'s shoes</h1>
