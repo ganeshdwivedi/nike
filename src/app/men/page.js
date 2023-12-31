@@ -12,7 +12,7 @@ const page = () => {
         <div className='py-10 md:p-10'>
             <MultiHero title={'Kicks that keep giving'} />
             <ProductCrousel />
-            <GetProducts category={"Men"} />
+            <GetProducts category={"men"} />
             <MultiHero title={'Speed beyond your wildest dreams'} />
         </div>
     )

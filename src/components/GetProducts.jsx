@@ -1,13 +1,12 @@
 "use client";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { client } from "../../sanity";
 import urlFor from "../../ImgUrl";
-import Card from "./Card";
+
 
 function GetProducts({ category }) {
   const [product, setProduct] = useState([]);
-
   const sanituGet = async () => {
     const query = `*[_type == 'product' && category == "${category}"]{
                 title,
@@ -27,7 +26,6 @@ function GetProducts({ category }) {
     sanituGet();
   }, []);
 
-  console.log(product)
   const getAllProducts = product.map((product, index) => <Link className="" key={product._id} href={`/men/${product.slug.current}`}>
     <div className='p-3'>
       <div className='w-[45vw] md:w-[23vw] h-[210px] md:h-[300px] overflow-hidden'><img className='object-cover' src={urlFor(product?.images[0])} alt={product?.title} /></div>

@@ -11,14 +11,12 @@ const ProductCrousel = () => {
                 _id,
         }`
         const products = await client.fetch(query);
-        console.log(products)
         setProduct(products[0].images);
     }
     useEffect(() => {
         getProducts()
     }, [])
 
-    console.log("ok", product)
     const Allproducts = product.map((item, index) => <div key={index} className='sm:min-w-[80vw] md:min-w-[25vw] p-1 h-full'><img src={urlFor(item)} alt='' /></div>)
     return (
         <div className='product-crousel'>

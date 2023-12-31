@@ -7,9 +7,12 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import toast, { Toaster } from "react-hot-toast";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import SearchIcon from '@mui/icons-material/Search';
+import { useSelector } from "react-redux";
+import CartBag from "./CartBag";
 
 function Navbar() {
   const [toggle, settoggle] = useState(false);
+  const cartItems = useSelector((state) => state.cart)
   const Toggle = () => {
     settoggle(!toggle);
   };
@@ -76,7 +79,7 @@ function Navbar() {
             </Link>
 
             <Link href={"/cart"}>
-              <ShoppingBagOutlinedIcon />
+              <CartBag number={cartItems.length} />
             </Link>
 
             <button

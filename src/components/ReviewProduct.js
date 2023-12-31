@@ -2,11 +2,16 @@
 import React, { useState, useEffect } from "react";
 import urlFor from "../../ImgUrl";
 import { client } from "../../sanity";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/redux/cartSlice";
+import toast, { Toaster } from 'react-hot-toast';
+import Link from "next/link";
 
 function ReviewProduct({ params }) {
   const [image, setImage] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
   const [product, setProduct] = useState([]);
+  const dispatch = useDispatch();
   const sanituGet = async () => {
     const query = `*[_type == 'product' && slug.current == "${params?.slug}"]{
                 title,
@@ -23,9 +28,35 @@ function ReviewProduct({ params }) {
     setImage(products[0].images);
   };
 
+  const showToast = (product) => {
+    toast(() => (
+      <div className="my-5">
+        <Link href={"/cart"} className="w-[200px] mx-2 bg-black text-white rounded-[25px] px-5 py-2">View Cart</Link>
+        <Link href={"/cart"} className="w-[200px] mx-2 border-black border-2 rounded-[25px] px-5 py-2">Checkout</Link>
+      </div>
+    ), { position: 'top-right', duration: 3000 })
+    toast.custom((t) => (
+      <div
+        className={`bg-white px-6 py-4 shadow-2xl rounded-md ${t.visible ? 'animate-enter' : 'animate-leave'
+          }`}
+      >
+        <div className="flex flex-row"> <div className="m-2"><img className="w-24" src={urlFor(product.images[0])} /></div>
+          <div className="m-2">
+            <p className="text-base my-2 font-medium">{product.title}</p>
+            <p className="text-sm text-slate-600">{product.category}'s Shoes</p>
+            <p className="text-sm font-medium">{product.price}</p></div></div>
+      </div>),
+      { position: 'top-right', duration: 3000 })
+  };
+
   useEffect(() => {
     sanituGet();
   }, []);
+
+  const addtocart = (product) => {
+    dispatch(addToCart(product))
+    showToast(product)
+  }
 
   const BuyUrl =
     "https://api.whatsapp.com/send?phone=919179792991&text=%F0%9F%98%80Hey%20i%20want%20to%20buy%20this%20%0A%0A";
@@ -73,6 +104,7 @@ function ReviewProduct({ params }) {
               </div>
 
               <div className="flex flex-col"> <button
+                onClick={() => addtocart(product)}
                 className="bg-black my-2 md:w-[25vw] rounded-[25px] py-2 text-white"
               >
                 Add to Bag
@@ -87,7 +119,7 @@ function ReviewProduct({ params }) {
               </div>
             </div>
           </div>
-
+          <Toaster />
         </div >
       ))
       }

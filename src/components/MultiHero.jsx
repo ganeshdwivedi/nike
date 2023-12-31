@@ -13,7 +13,6 @@ const MultiHero = ({ title }) => {
             title,
         }`
         const response = await client.fetch(query);
-        console.log(response);
         setProduct(response)
     }
     useEffect(() => {
