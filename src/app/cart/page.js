@@ -24,7 +24,7 @@ const page = () => {
                         return (<div key={item._id}>
                             <div className='flex flex-col md:flex-row justify-around my-5'>
                                 <div className='flex md:flex-row '>
-                                    <Link href={`/${item.category}/${item.slug.current}`}> <img className='w-36  h-28 md:h-36' src={urlFor(item.images[0])} alt={item.title} /></Link>
+                                    <div className='w-36  h-full md:h-36'> <Link href={`/${item.category}/${item.slug.current}`}> <img className='w-full h-full rounded-md object-cover' src={urlFor(item.images[0])} alt={item.title} /></Link></div>
                                     <div className='mx-5'>
                                         <p className='text-base font-medium'>{item.title}</p>
                                         <p className='text-sm text-slate-500'>{item.category}'s Shoes</p>
