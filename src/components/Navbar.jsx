@@ -47,7 +47,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className={navlinkcss}>
-                <Link className={""} href="/kid">
+                <Link className={""} href="/kids">
                   kids
                 </Link>
               </li>
@@ -109,7 +109,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className={mobNavlinkcss}>
-                <Link className={""} href="/kid">
+                <Link className={""} href="/kids">
                   kids
                 </Link>
               </li>
