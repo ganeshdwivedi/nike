@@ -7,10 +7,10 @@ import ProductCrousel from '@/components/ProductCrousel'
 const page = (props) => {
     return (
         <div className='py-10 md:p-10'>
-            <MultiHero title={'Bold moves, Bold looks'} />
+            <MultiHero title={'Today just got easier'} />
             <ProductCrousel />
-            <GetProducts props={props.searchParams} category={"women"} />
-            <MultiHero title={'Rise and Shine'} />
+            <GetProducts props={props.searchParams} category={"kids"} />
+            <MultiHero title={'For all her moves'} />
         </div>
     )
 }
