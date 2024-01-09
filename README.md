@@ -1,6 +1,6 @@
 ## Nike Clone Web App | Next eCommerce Web App
 
-### [Demo Link](https://x-beat.netlify.app/](https://nike-git-master-ganeshdwivedi.vercel.app/) 🔗
+### [Demo Link](https://nike-git-master-ganeshdwivedi.vercel.app/) 🔗
 
 Overview
 This GitHub repository houses a comprehensive clone of the Nike web application, offering users an immersive experience of browsing, adding, and removing products from their shopping cart. Built with a focus on responsiveness and cutting-edge technologies, this project leverages Next.js, Sanity.io, Redux Toolkit, and various other tools to deliver a seamless and feature-rich e-commerce platform.
