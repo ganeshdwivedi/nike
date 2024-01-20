@@ -1,21 +1,25 @@
+import Link from 'next/link'
 import React from 'react'
+import { Fade } from 'react-awesome-reveal'
 
 const Essentials = () => {
     return (
-        <div className='md:flex md:flex-row gap-3 md:mx-10 px-10'>
-            <div className='w-full h-full overflow-hidden'>
-                <img className='md:h-[450px] md:scale-x-125' src='https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/0bb04be7-4897-4404-b920-9c6417726cac/nike-just-do-it.png' alt='' />
-                <button className='px-5 py-2'>Men's</button>
+        <Fade>
+            <div className='md:flex md:flex-row gap-3 md:mx-10 md:px-0 px-10'>
+                <Link href={'/men'} className='w-full h-full overflow-hidden'>
+                    <img className='w-full h-full' src='https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/3c36844b-9740-4b40-b024-efbf068f8ef5/image.png' alt='' />
+                    <button className='px-5 py-2'>Men's</button>
+                </Link>
+                <Link href={"/women"} className='w-full h-full overflow-hidden'>
+                    <img className='w-full h-full' src='https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/46a63970-621c-454c-951b-da4a852be392/image.png' alt='' />
+                    <button className='px-5 py-2 '>Women's</button>
+                </Link>
+                <Link href={"/kids"} className='w-full h-full overflow-hidden'>
+                    <img className='w-full h-full' src='https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/390ccdaf-9af1-452d-9791-ec9259829cff/image.png' alt='' />
+                    <button className='px-5 py-2 '>Kid's</button>
+                </Link>
             </div>
-            <div className='w-full h-full overflow-hidden'>
-                <img className='md:h-[450px] md:scale-x-125' src='https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/09e29ab8-fef6-4d20-986d-b131b966fb11/nike-just-do-it.png' alt='' />
-                <button className='px-5 py-2 '>Women's</button>
-            </div>
-            <div className='w-full h-full overflow-hidden'>
-                <img className='md:h-[450px] md:scale-x-125' src='https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/87005d01-6889-41cf-85bc-2cdbb96ac2f5/nike-just-do-it.png' alt='' />
-                <button className='px-5 py-2 '>Kid's</button>
-            </div>
-        </div>
+        </Fade>
     )
 }
 

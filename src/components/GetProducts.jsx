@@ -40,7 +40,7 @@ function GetProducts({ category, props }) {
 
   const getAllProducts = product.map((product) => <Link className="" key={product._id} href={`/${category}/${product.slug.current}`}>
     <div className='p-3'>
-      <div className='w-[45vw] md:w-[23vw] h-[210px] md:h-[300px] overflow-hidden'><img className='object-cover' src={urlFor(product?.images[0])} alt={product?.title} /></div>
+      <div className='w-[45vw] md:w-[23vw] h-[210px] md:h-[300px] overflow-hidden'><img className='object-cover w-full h-full' src={urlFor(product?.images[0])} alt={product?.title} /></div>
       <div>
         <h3 className='text-base font-medium my-1'>{product?.title}</h3>
         <p className='text-slate-700 text-sm my-1'>{product?.category}'s Shoes</p>
