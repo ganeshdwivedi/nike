@@ -18,7 +18,7 @@ function page() {
                     email,
                     password,
                 });
-                sessionStorage.setItem('token', response.data.token)
+                localStorage.setItem('token', response.data.token)
                 router.push("/cart");
             } else {
                 toast.error("please enter your email and password");
