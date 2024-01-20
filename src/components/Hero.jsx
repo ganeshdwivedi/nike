@@ -1,8 +1,10 @@
+"use client"
 import React from "react";
+import { Fade } from "react-awesome-reveal";
 
 const Hero = () => {
   return (
-    <div className="pt-10">
+    <Fade triggerOnce="true" className="pt-14 md:pt-10">
       <div>
         <img
           className="w-full sm:p-3 md:p-10"
@@ -10,7 +12,7 @@ const Hero = () => {
           alt="hero-img"
         />
       </div>
-      <div className="felx flex-col sm:text-left m-3 md:text-center">
+      <div className="m-3 text-center">
         <p>Nike Ekiden Pack</p>
         <h3 className="sm:text-4xl md:text-6xl font-extrabold uppercase">
           Running is Believing
@@ -24,7 +26,7 @@ const Hero = () => {
           Shop
         </button>
       </div>
-    </div>
+    </Fade>
   );
 };
 

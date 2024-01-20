@@ -5,6 +5,7 @@ import { client } from "../../sanity";
 import urlFor from "../../ImgUrl";
 import { useRouter } from "next/navigation";
 import TuneIcon from '@mui/icons-material/Tune';
+import { Fade } from "react-awesome-reveal";
 
 
 function GetProducts({ category, props }) {
@@ -50,10 +51,10 @@ function GetProducts({ category, props }) {
 
   return (
     <>
-      <div className="flex justify-center md:flex-row flex-col sm:my-[4.5rem] my-10">
-        <div className='w-[80vw] md:w-[25vw] mx-10 md:mx-0 flex-row flex md:flex-col items-start '>
+      <div className="flex overflow-hidden justify-center md:flex-row flex-col sm:my-[4.5rem] my-10">
+        <div className='w-[80vw] md:w-[25vw] mx-10 md:mx-0 flex-col flex items-start '>
           <p className="text-xl font-medium my-5">{product[0]?.category}'s Shoes({product?.length})</p>
-          <div className="flex text-base text-left font-medium flex-col">
+          <div className="flex gap-x-5 text-base text-left font-medium flex-col ">
             <button className={props.shoeType == '' ? "underline underline-offset-4 text-left my-2" : "text-left my-2"} onClick={() => router.replace(`/${category}`)}>All</button>
             <button className={props.shoeType == 'Sneakers' ? "underline underline-offset-4 text-left my-2" : "text-left my-2"} onClick={() => router.replace(`/${category}/?shoeType=Sneakers`)} >Sneakers</button>
             <button onClick={() => router.replace(`/${category}/?shoeType=Jordan`)} className={props.shoeType == 'Jordan' ? "underline underline-offset-4 text-left my-2" : "text-left my-2"}>Jordan</button>
@@ -72,7 +73,9 @@ function GetProducts({ category, props }) {
           </div>
         </div>
         <div className="grid md:w-[80vw] w-[100vw] grid-cols-2 md:grid-cols-3 md:gap-x-10">
-          {getAllProducts}
+          <Fade triggerOnce="true" duration={200} cascade="true">
+            {getAllProducts}
+          </Fade>
         </div>
       </div>
     </>

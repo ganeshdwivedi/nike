@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { client } from '../../sanity';
 import urlFor from '../../ImgUrl';
+import { Fade } from 'react-awesome-reveal';
 
 const ProductCrousel = () => {
     const [product, setProduct] = useState([]);
@@ -21,9 +22,11 @@ const ProductCrousel = () => {
     return (
         <div className='product-crousel'>
             <h3 className='md:mx-16 sm:mx-10 font-semibold text-2xl'>Always Iconic</h3>
-            <div className='flex flex-row overflow-x-scroll mx-8'>
-                {Allproducts}
-            </div>
+            <Fade triggerOnce="true" duration={200}>
+                <div className='flex flex-row overflow-x-scroll mx-8'>
+                    {Allproducts}
+                </div>
+            </Fade>
         </div>
     )
 }

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { client } from '../../sanity';
 import urlFor from '../../ImgUrl';
+import { Fade } from 'react-awesome-reveal';
 
 const MultiHero = ({ title }) => {
     const [product, setProduct] = useState([]);
@@ -19,7 +20,7 @@ const MultiHero = ({ title }) => {
         GetHero()
     }, [])
 
-    const ShowHero = product.map((item) => <div key={item._id}><div>
+    const ShowHero = product.map((item) => <div className='py-[20px]' key={item._id}><div>
         <img
             className="w-full sm:p-3 md:p-10"
             src={urlFor(item.images[0])}
@@ -41,7 +42,7 @@ const MultiHero = ({ title }) => {
             </button>
         </div></div>)
     return (
-        <div>{ShowHero}</div>
+        <Fade >{ShowHero}</Fade>
     )
 }
 

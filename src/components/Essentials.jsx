@@ -2,7 +2,7 @@ import React from 'react'
 
 const Essentials = () => {
     return (
-        <div className='md:flex md:flex-row gap-3 md:mx-10'>
+        <div className='md:flex md:flex-row gap-3 md:mx-10 px-10'>
             <div className='w-full h-full overflow-hidden'>
                 <img className='md:h-[450px] md:scale-x-125' src='https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_540,c_limit/0bb04be7-4897-4404-b920-9c6417726cac/nike-just-do-it.png' alt='' />
                 <button className='px-5 py-2'>Men's</button>
