@@ -23,11 +23,11 @@ function Navbar() {
     "text-[25px] font-medium hover:underline decoration-black decoration-2 underline-offset-8";
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'))
+    setToken(sessionStorage.getItem('token'))
   }, [token])
 
   const logout = () => {
-    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
     setToken(null)
   }
 

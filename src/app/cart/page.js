@@ -22,7 +22,7 @@ const page = () => {
 
     //getting token
     useEffect(() => {
-        setToken(localStorage.getItem('token'))
+        setToken(sessionStorage.getItem('token'))
     }, [token])
 
     //checkout 
@@ -58,27 +58,28 @@ const page = () => {
     return (
         <div className='p-10 py-24 flex sm:flex-col md:flex-row items-start'>
             <div className='w-[80vw] md:w-[65vw] md:m-10'>
-                <p className='text-xl mb-10 font-medium'>Bag</p>
+                <p className='text-xl mb-10 font-medium'>{cartItems.length > 0 ? "Bag" : "Bag 0 Items"}</p>
                 {
-                    cartItems.map((item) => {
+                    cartItems.length == 0 ? <h3>Please Add product to cart</h3> :
+                        cartItems.map((item) => {
 
-                        return (<div key={item._id}>
-                            <div className='flex flex-col md:flex-row justify-around my-5'>
-                                <div className='flex md:flex-row '>
-                                    <div className='w-36  h-full md:h-36'> <Link href={`/${item.category}/${item.slug.current}`}> <img className='w-full h-full rounded-md object-cover' src={urlFor(item.images[0])} alt={item.title} /></Link></div>
-                                    <div className='mx-5'>
-                                        <p className='text-base font-medium'>{item.title}</p>
-                                        <p className='text-sm text-slate-500'>{item.category}'s Shoes</p>
-                                        <p className='text-sm font-medium'>{item.shoeType}</p>
-                                        <button className='my-3' onClick={() => removefromcart(item._id)}><DeleteOutlinedIcon /></button>
-                                    </div></div>
-                                <div>
-                                    <p className='font-medium text-lg md:text-base'>MRP: ₹ {item.price}</p>
+                            return (<div key={item._id}>
+                                <div className='flex flex-col md:flex-row justify-around my-5'>
+                                    <div className='flex md:flex-row '>
+                                        <div className='w-36  h-full md:h-36'> <Link href={`/${item.category}/${item.slug.current}`}> <img className='w-full h-full rounded-md object-cover' src={urlFor(item.images[0])} alt={item.title} /></Link></div>
+                                        <div className='mx-5'>
+                                            <p className='text-base font-medium'>{item.title}</p>
+                                            <p className='text-sm text-slate-500'>{item.category}'s Shoes</p>
+                                            <p className='text-sm font-medium'>{item.shoeType}</p>
+                                            <button className='my-3' onClick={() => removefromcart(item._id)}><DeleteOutlinedIcon /></button>
+                                        </div></div>
+                                    <div>
+                                        <p className='font-medium text-lg md:text-base'>MRP: ₹ {item.price}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr className='w-full text-black' />
-                        </div>)
-                    })
+                                <hr className='w-full text-black' />
+                            </div>)
+                        })
                 }
 
             </div>

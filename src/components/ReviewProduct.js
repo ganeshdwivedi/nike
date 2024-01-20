@@ -4,14 +4,14 @@ import urlFor from "../../ImgUrl";
 import { client } from "../../sanity";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
-import toast, { Toaster } from 'react-hot-toast';
-import Link from "next/link";
+import ShowToast from "./ShowToast";
 
 
 function ReviewProduct({ params }) {
   const [image, setImage] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
   const [product, setProduct] = useState([]);
+  const [toggle, setToggle] = useState(false)
   const dispatch = useDispatch();
   const sanituGet = async () => {
     const query = `*[_type == 'product' && slug.current == "${params?.slug}"]{
@@ -29,44 +29,15 @@ function ReviewProduct({ params }) {
     setImage(products[0].images);
   };
 
-
-  const showToast = (product) => {
-    toast(() => (
-      <div className="my-5">
-        <Link href={"/cart"} className="w-[200px] mx-2 bg-black text-white rounded-[25px] px-5 py-2">View Cart</Link>
-        <Link href={"/cart"} className="w-[200px] mx-2 border-black border-2 rounded-[25px] px-5 py-2">Checkout</Link>
-      </div>
-    ), { position: 'top-right', duration: 3000 })
-    toast.custom((t) => (
-      <div
-        className={`bg-white px-6 py-4 shadow-2xl rounded-md ${t.visible ? 'animate-enter' : 'animate-leave'
-          }`}
-      >
-        <div className="flex flex-row"> <div className="m-2"><img className="w-24" src={urlFor(product.images[0])} /></div>
-          <div className="m-2">
-            <p className="text-base my-2 font-medium">{product.title}</p>
-            <p className="text-sm text-slate-600">{product.category}'s Shoes</p>
-            <p className="text-sm font-medium">{product.price}</p></div></div>
-      </div>),
-      { position: 'top-right', duration: 3000 })
-  };
-
   useEffect(() => {
     sanituGet();
-  }, []);
+  }, [toggle]);
 
   const addtocart = (product) => {
     dispatch(addToCart(product))
-    showToast(product)
+    setToggle(!toggle)
+    setTimeout(() => setToggle(false), 1500)
   }
-
-  const BuyUrl =
-    "https://api.whatsapp.com/send?phone=919179792991&text=%F0%9F%98%80Hey%20i%20want%20to%20buy%20this%20%0A%0A";
-  const encodedurl = "https%3A%2F%2Fpuma-ganeshdwivedi.vercel.app%2FMen";
-
-  const handleBuy = () => {
-    window.open(`${BuyUrl}${encodedurl}/${params.slug}`);
-  };
 
 
   return (
@@ -74,6 +45,9 @@ function ReviewProduct({ params }) {
 
       {product.map((product) => (
         <div key={product?._id} className="pt-14 md:pt-10 text-start">
+          {
+            toggle ? <ShowToast className={"md:right-20 md:top-20 right-0 top-20"} product={product} /> : ""
+          }
           <div className="flex md:my-20 flex-col items-center md:items-start md:flex-row md:justify-center">
             <div className="flex order-2 md:order-none md:overflow-hidden overflow-x-scroll flex-row md:flex-col">
               {image?.map((item, index) => (
@@ -122,7 +96,6 @@ function ReviewProduct({ params }) {
               </div>
             </div>
           </div>
-          <Toaster />
         </div >
       ))
       }

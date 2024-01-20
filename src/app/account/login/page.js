@@ -14,12 +14,11 @@ function page() {
         toast("wait while we recognize user");
         try {
             if (email != "" && password != "") {
-                const response = await axios.post("https://book-store-backend-ru34.onrender.com/api/user/login", {
+                const response = await axios.post("/api/user/login", {
                     email,
                     password,
                 });
-                console.log(response.data);
-                localStorage.setItem('token', response.data)
+                sessionStorage.setItem('token', response.data.token)
                 router.push("/cart");
             } else {
                 toast.error("please enter your email and password");
@@ -92,7 +91,7 @@ function page() {
                                         By logging in, I confirm that I have read and accept the
                                         Terms and Conditionsand the Privacy Policy.
                                     </p>
-                                    <Link href={"/account/Register"} className="self-start ">
+                                    <Link href={"/account/register"} className="self-start ">
                                         Don't Have an account yet{" "}
                                         <span className="text-lg font-bold underline">
                                             Register Here
