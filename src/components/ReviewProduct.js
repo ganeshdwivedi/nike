@@ -7,6 +7,7 @@ import { addToCart } from "@/redux/cartSlice";
 import toast, { Toaster } from 'react-hot-toast';
 import Link from "next/link";
 
+
 function ReviewProduct({ params }) {
   const [image, setImage] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
@@ -27,6 +28,7 @@ function ReviewProduct({ params }) {
     setProduct(products);
     setImage(products[0].images);
   };
+
 
   const showToast = (product) => {
     toast(() => (
@@ -65,6 +67,7 @@ function ReviewProduct({ params }) {
   const handleBuy = () => {
     window.open(`${BuyUrl}${encodedurl}/${params.slug}`);
   };
+
 
   return (
     <>

@@ -1,17 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import toast, { Toaster } from "react-hot-toast";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import SearchIcon from '@mui/icons-material/Search';
 import { useSelector } from "react-redux";
 import CartBag from "./CartBag";
 
 function Navbar() {
   const [toggle, settoggle] = useState(false);
+  const [token, setToken] = useState(null);
   const cartItems = useSelector((state) => state.cart)
   const Toggle = () => {
     settoggle(!toggle);
@@ -21,10 +21,19 @@ function Navbar() {
   const mobNavlinkcss =
     "text-[25px] font-medium hover:underline decoration-black decoration-2 underline-offset-8";
 
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [token])
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    setToken(null)
+  }
+
   return (
     <>
       <nav className="relative">
-        <div className="flex w-full z-40 bg-white  fixed flex-row justify-between items-center  py-3 px-10">
+        <div className="flex w-full z-40 bg-white  fixed flex-row justify-between items-center  py-3 px-[25px]">
           <div>
             <Link href={"/"}>
               <img
@@ -67,13 +76,7 @@ function Navbar() {
             </ul>
           </div>
 
-          <div className="flex flex-row gap-5">
-            <div className="flex items-center justify-center flex-row rounded-[25px] bg-[#edecec]"> <SearchIcon />
-              <input
-                type="search"
-                placeholder="search"
-                className="w-28 md:block sm:hidden rounded-[25px] border-0 py-2 px-3 bg-[#edecec]"
-              /></div>
+          <div className="flex items-center flex-row gap-5">
             <Link href={"/wishlist"}>
               <FavoriteBorderIcon fontSize="medium" />
             </Link>
@@ -81,7 +84,12 @@ function Navbar() {
             <Link href={"/cart"}>
               <CartBag number={cartItems.length} />
             </Link>
-
+            <Link className={token ? "hidden" : "md:px-[20px] py-[7px] bg-black rounded-[25px] text-white"} href={"/account/login"}>
+              Login
+            </Link>
+            <button onClick={logout} className={token ? "px-[20px] py-[7px] bg-black rounded-[25px] text-white" : "hidden"}>
+              Logout
+            </button>
             <button
               onClick={Toggle}
               className="text-black sm:block md:hidden Hamburger "
@@ -126,6 +134,7 @@ function Navbar() {
                   Gifts 🎁
                 </Link>
               </li>
+
             </ul >
           </div >
           <Toaster />

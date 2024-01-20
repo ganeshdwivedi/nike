@@ -1,19 +1,60 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import urlFor from '../../../ImgUrl'
 import Link from 'next/link'
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import { removeFromCart } from '@/redux/cartSlice'
 import HelpIcon from '@mui/icons-material/Help';
+import getStripe from '../../../lib/getStripe'
+import toast, { Toaster } from 'react-hot-toast';
+
+
 
 const page = () => {
-    const cartItems = useSelector((state) => state.cart)
+    const cartItems = useSelector((state) => state.cart);
+    const [token, setToken] = useState(null);
+
     const dispatch = useDispatch();
     const removefromcart = (id) => {
         dispatch(removeFromCart(id))
     }
 
+    //getting token
+    useEffect(() => {
+        setToken(localStorage.getItem('token'))
+    }, [token])
+
+    //checkout 
+
+    const handleCheckout = async () => {
+        if (cartItems.length == 0) {
+            toast.error("please Add products to cart")
+        }
+        else if (token) {
+            const stripe = await getStripe();
+
+            const response = await fetch('/api/stripe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(cartItems)
+                // product, image
+            })
+
+            if (response.statusCode === 500) return;
+            toast.loading('...redirecting')
+            console.log(stripe)
+            // const SESS_ID = response.data.session.id
+            const data = await response.json();
+            console.log(data.session.id)
+            stripe.redirectToCheckout({ sessionId: data.session.id })
+
+        } else {
+            toast.error("please login first")
+        }
+    }
     return (
         <div className='p-10 py-24 flex sm:flex-col md:flex-row items-start'>
             <div className='w-[80vw] md:w-[65vw] md:m-10'>
@@ -60,10 +101,11 @@ const page = () => {
                     <hr className='w-full text-black my-2' />
                     <div className='flex flex-col justify-between'>
                         <button className='px-3 py-3 my-3 bg-black text-white rounded-[25px]'>Guest Checkout</button>
-                        <button className='px-3 py-3 my-3 bg-black text-white rounded-[25px]'>Member Checkout</button>
+                        <button onClick={handleCheckout} className='px-3 py-3 my-3 bg-black text-white rounded-[25px]'>Member Checkout</button>
                     </div>
                 </div>
             </div>
+            <Toaster />
         </div>
     )
 }
