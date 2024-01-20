@@ -8,7 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useSelector } from "react-redux";
 import CartBag from "./CartBag";
-import { Slide } from "react-awesome-reveal";
+
 
 function Navbar() {
   const [toggle, settoggle] = useState(false);
@@ -106,36 +106,35 @@ function Navbar() {
           className="p-10 z-10 mr-20 duration-1000 delay-300 ease-in-out pt-20 fixed bg-white w-[100vw] h-[100vh]">
           <div className="">
             <div className={`flex-col flex gap-4`}>
-              <Slide duration={200} className={mobNavlinkcss}>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link href="/">New & Featured</Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link href={"/men"}>Men</Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link className={""} href={"/women"}>
                   women
                 </Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link className={""} href="/kids">
                   kids
                 </Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link href="/sale">Sale</Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link className={""} href="/customize">
                   Customize
                 </Link>
-              </Slide>
-              <Slide duration={200} className={mobNavlinkcss}>
+              </li>
+              <li duration={200} className={mobNavlinkcss}>
                 <Link className={""} href="/gifts">
                   Gifts 🎁
                 </Link>
-              </Slide>
-
+              </li>
             </div>
           </div>
           <Toaster />
