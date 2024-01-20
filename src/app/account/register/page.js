@@ -20,7 +20,7 @@ export default function page() {
                     name,
 
                 });
-                sessionStorage.setItem("token", response.data.token)
+                localStorage.setItem("token", response.data.token)
                 router.push("/cart");
                 toast.success("Registeration successfull.");
             } else {
