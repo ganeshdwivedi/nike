@@ -101,7 +101,7 @@ const page = () => {
                     </div>
                     <hr className='w-full text-black my-2' />
                     <div className='flex flex-col justify-between'>
-                        <button className='px-3 py-3 my-3 bg-black text-white rounded-[25px]'>Guest Checkout</button>
+                        <button className={token ? "hidden" : 'px-3 py-3 my-3 bg-black text-white rounded-[25px]'}>Guest Checkout</button>
                         <button onClick={handleCheckout} className='px-3 py-3 my-3 bg-black text-white rounded-[25px]'>Member Checkout</button>
                     </div>
                 </div>
