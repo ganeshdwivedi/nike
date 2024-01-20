@@ -22,7 +22,7 @@ const page = () => {
 
     //getting token
     useEffect(() => {
-        setToken(sessionStorage.getItem('token'))
+        setToken(localStorage.getItem('token'))
     }, [token])
 
     //checkout 
