@@ -7,11 +7,11 @@ import ProductCrousel from "@/components/ProductCrousel";
 import Products from "@/components/Products";
 import Essentials from "@/components/Essentials";
 import ShopByCat from "@/components/ShopByCat";
-import { Fade } from "react-awesome-reveal";
+
 
 export default function Home() {
   return (
-    <Fade cascade="true" triggerOnce="true" duration={150} >
+    <>
       <Navbar />
       <Hero />
       <HeroAfter />
@@ -20,6 +20,6 @@ export default function Home() {
       <ShopByCat />
       <Essentials />
       <Footer />
-    </Fade >
+    </>
   );
 }
