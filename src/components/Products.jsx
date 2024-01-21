@@ -30,8 +30,8 @@ const Products = () => {
     const AllProducts = product.map((item, index) => {
         return (
 
-            <Link href={`${item.category}/${item.slug.current}`}>
-                <Card key={index} img={urlFor(item.images[0])} title={item.title} cat={item.category} description={`MRP:  ₹ ${item.price}`} />
+            <Link key={item._id} href={`${item.category}/${item.slug.current}`}>
+                <Card img={urlFor(item.images[0])} title={item.title} cat={item.category} description={`MRP:  ₹ ${item.price}`} />
             </Link>
 
         )

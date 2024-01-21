@@ -5,6 +5,7 @@ import { client } from "../../sanity";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import ShowToast from "./ShowToast";
+import RelatedProducts from "./RelatedProducts";
 
 
 function ReviewProduct({ params }) {
@@ -96,7 +97,10 @@ function ReviewProduct({ params }) {
               </div>
             </div>
           </div>
+          <RelatedProducts currentProductId={product?._id}
+            shoeType={product?.shoeType} category={product?.category} />
         </div >
+
       ))
       }
 
@@ -104,4 +108,6 @@ function ReviewProduct({ params }) {
   );
 }
 
+//currentProductId={product?._id}
+// shoeType={product?.shoeType}
 export default ReviewProduct;

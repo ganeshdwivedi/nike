@@ -11,3 +11,6 @@
 .HomeCat::-webkit-scrollbar{
     color: transparent;
 }
+.RelatedProduct ::-webkit-scrollbar{
+display: none;
+}

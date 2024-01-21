@@ -34,7 +34,7 @@ export default function page() {
 
     return (
         <div className="lg:pt-20 bg-[url('https://img.freepik.com/premium-vector/polygon-abstract-polygonal-geometric-triangle-background_212889-5257.jpg?w=996')] bg-cover bg-center relative  overflow-x-clip ">
-            <div className="sm:pt-20 md:mt-0 sm:m-2 ">
+            <div className="sm:pt-20 md:mt-0  ">
                 <div className="mb-[-15px] p-10 flex justify-center">
                     <form
                         className="md:w-[37vw] rounded-md p-10 bg-white bg-opacity-30 backdrop-blur-[6px] sm:w-full"

@@ -8,10 +8,9 @@ import Products from "@/components/Products";
 import Essentials from "@/components/Essentials";
 import ShopByCat from "@/components/ShopByCat";
 
-
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
       <Hero />
       <HeroAfter />
@@ -20,6 +19,6 @@ export default function Home() {
       <ShopByCat />
       <Essentials />
       <Footer />
-    </>
+    </div>
   );
 }
