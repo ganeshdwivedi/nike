@@ -37,7 +37,7 @@ const page = () => {
             const response = await fetch('/api/stripe', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(cartItems)
                 // product, image

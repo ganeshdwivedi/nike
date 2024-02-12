@@ -6,13 +6,19 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartSlice";
 import ShowToast from "./ShowToast";
 import RelatedProducts from "./RelatedProducts";
-
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 function ReviewProduct({ params }) {
   const [image, setImage] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
   const [product, setProduct] = useState([]);
   const [toggle, setToggle] = useState(false)
+  const [model, setModal] = useState(false)
+  const [modelImage, setModalImage] = useState()
+
   const dispatch = useDispatch();
   const sanituGet = async () => {
     const query = `*[_type == 'product' && slug.current == "${params?.slug}"]{
@@ -39,6 +45,9 @@ function ReviewProduct({ params }) {
     setToggle(!toggle)
     setTimeout(() => setToggle(false), 1500)
   }
+  const handleClose = () => {
+    setModal(false)
+  }
 
 
   return (
@@ -50,6 +59,24 @@ function ReviewProduct({ params }) {
             toggle ? <ShowToast className={"md:right-20 md:top-20 right-0 top-20"} product={product} /> : ""
           }
           <div className="flex md:my-20 flex-col items-center md:items-start md:flex-row md:justify-center">
+
+
+            <Dialog
+              open={model}
+              fullWidth={true}
+              fullScreen={true}
+              fullHeight
+              maxWidth="lg"
+              keepMounted
+              aria-describedby="alert-dialog-slide-description"
+            >
+              <DialogContent className="relative object-center">
+                <button className="fixed left-[90vw]" onClick={handleClose}> <IconButton className="p-2 hover:bg-black bg-black text-white">
+                  <CloseIcon />
+                </IconButton></button>
+                <img className="object-center cursor-zoom-in" src={urlFor((thumbnail ? thumbnail : product?.images[0]))} alt="" />
+              </DialogContent>
+            </Dialog>
             <div className="flex order-2 md:order-none md:overflow-hidden overflow-x-scroll flex-row md:flex-col">
               {image?.map((item, index) => (
                 <img
@@ -61,7 +88,7 @@ function ReviewProduct({ params }) {
                 />
               ))}
             </div>
-            <div className="md:w-[40vw] order-1 mx-3 overflow-hidden w-[90vw] h-full md:h-full ">
+            <div onClick={() => setModal(true)} className="md:w-[40vw] order-1 mx-3 overflow-hidden w-[90vw] h-full md:h-full ">
               <img
                 className="object-cover rounded-md"
                 src={urlFor(thumbnail ? thumbnail : product?.images[0])}

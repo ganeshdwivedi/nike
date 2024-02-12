@@ -17,7 +17,7 @@ const VoiceflowChat = () => {
         return () => document.head.removeChild(script);
     }, []);
 
-    return <div id="voiceflow-chat-container"></div>;
+    return <div className='w-[3vw] md:w-full' id="voiceflow-chat-container "></div>;
 };
 
 export default VoiceflowChat;

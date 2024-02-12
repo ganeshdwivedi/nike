@@ -39,7 +39,7 @@ const ProductCrousel = () => {
 
     return (
         <div className='product-crousel relative px-[25px]'>
-            <div className='absolute top-44 left-[3.3vw] flex-row hidden md:flex z-40 gap-x-[85vw]'>
+            <div className='absolute top-44 left-[3.3vw] flex-row hidden lg:flex z-40 gap-x-[85vw]'>
                 <div className='hover:shadow-md cursor-pointer p-3 bg-opacity-30 rounded-full' onClick={prevHandler}><ArrowBackIosIcon className='text-[black] ml-[1px]' /></div>
                 <div className='hover:shadow-md cursor-pointer p-3 bg-opacity-30 rounded-full' onClick={nextHandler}><ArrowForwardIosIcon className='text-[black] ml-[1px]' /></div>
             </div>
@@ -56,7 +56,7 @@ const ProductCrousel = () => {
                             spaceBetween: 10,
                         },
                         768: {
-                            slidesPerView: 3,
+                            slidesPerView: 4,
                             spaceBetween: 10,
                         },
                         1024: {

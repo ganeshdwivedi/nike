@@ -11,11 +11,11 @@ import VoiceflowChat from "@/components/VoiceFlowAI";
 
 export default function Home() {
   return (
-    <div className="overflow-hidden">
+    <div className="">
       <Navbar />
       <Hero />
+      <VoiceflowChat />
       <HeroAfter />
-    <VoiceflowChat/>
       <ProductCrousel />
       <Products />
       <ShopByCat />
