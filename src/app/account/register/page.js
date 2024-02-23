@@ -4,6 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 export default function page() {
     const router = useRouter();
@@ -53,42 +54,50 @@ export default function page() {
                             <div className="flex flex-col my-3">
                                 <label className="text-sm font-bold">Name</label>
                                 <input
-                                    value={name}
-                                    onChange={(e) => {
-                                        setName(e.target.value);
-                                    }}
-                                    required
-                                    className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                    type="text"
-                                    placeholder="Enter your Name"
-                                />
+                                          style={{backgroundColor:'white'}}
+                                            value={name}
+                                            onChange={(e) => {
+                                                setName(e.target.value)
+                                            }}
+                                            required
+                                            className="md:w-[35vw] rounded-[25px] sm:w-full px-4 py-3 border border-solid border-black"
+                                            type="name"
+                                            placeholder="Enter your Name"
+                                        />
                             </div>
                             <div className="flex flex-col my-3">
                                 <label className="text-sm font-bold">Email</label>
                                 <input
-                                    value={email}
-                                    onChange={(e) => {
-                                        setEmail(e.target.value);
-                                    }}
-                                    required
-                                    className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                    type="email"
-                                    placeholder="Enter your Email"
-                                />
+                                          style={{backgroundColor:'white'}}
+                                            value={email}
+                                            onChange={(e) => {
+                                                setEmail(e.target.value)
+                                            }}
+                                            required
+                                            className="md:w-[35vw] rounded-[25px] sm:w-full px-4 py-3 border border-solid border-black"
+                                            type="email"
+                                            placeholder="Enter your Email"
+                                        />
                             </div>
                             <div className="flex flex-col my-3 text-start">
                                 <label className="text-sm font-bold">password</label>
-                                <input
-                                    value={password}
-                                    onChange={(e) => {
-                                        setPassword(e.target.value);
-                                    }}
-                                    required
-                                    autoComplete="true"
-                                    className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                    type="password"
-                                    placeholder="Enter your password"
-                                />
+                                <div className="flex flex-row bg-white items-center py-[0.2rem] px-4 border border-solid border-black md:w-[35vw] rounded-[25px] sm:w-full">
+                                        <input
+                                        style={{backgroundColor:'white'}}
+                                            value={password}
+                                            onChange={(e) => {
+                                                setPassword(e.target.value);
+                                            }}
+                                            required
+                                            autoComplete="true"
+                                            className="md:w-[95%] outline-none py-[0.6rem] border-none sm:w-full"
+                                            type={visible ? 'text' : 'password'}
+                                            placeholder="Enter your password"
+                                        />
+                                        <div onClick={()=>setVisible(!visible)}>
+                                        {visible ? <IoEyeOffOutline/> : <IoEyeOutline/>}
+                                        </div>
+                                        </div>
                             </div>
 
                             <button
