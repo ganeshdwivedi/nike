@@ -9,6 +9,7 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 const page = (params) => {
     const [password, setPassword] = useState("");
     const [cfpassword, setCfPassword] = useState("");
+    const [visible,setVisible] = useState(false)
     const router = useRouter()
 
     useEffect(() => {

@@ -11,6 +11,7 @@ export default function page() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [visible,setVisible] = useState(false)
 
     const handleSubmit = async () => {
         try {
