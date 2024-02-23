@@ -63,7 +63,7 @@ function page() {
                                           style={{backgroundColor:'white'}}
                                             value={email}
                                             onChange={(e) => {
-                                                setEmail(e.target.value);
+                                                setEmail(e.target.value)
                                             }}
                                             required
                                             className="md:w-[35vw] rounded-[25px] sm:w-full px-4 py-3 border border-solid border-black"
