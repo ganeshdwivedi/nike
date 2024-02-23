@@ -20,7 +20,7 @@ const MultiHero = ({ title }) => {
         GetHero()
     }, [])
 
-    const ShowHero = product.map((item) => <div className='py-[20px]' key={item._id}><div>
+    const ShowHero = product.map((item) => <div className='py-[20px] md:px-10' key={item._id}><div>
         <img
             className="w-full sm:p-3 md:p-10"
             src={urlFor(item.images[0])}

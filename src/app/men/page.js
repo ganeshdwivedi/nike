@@ -6,7 +6,7 @@ import MultiHero from '@/components/MultiHero'
 
 const page = (props) => {
     return (
-        <div className='py-10 md:p-10'>
+        <div className='py-10'>
             <MultiHero title={'Kicks that keep giving'} />
             <ProductCrousel />
             <GetProducts props={props.searchParams} category={"men"} />
