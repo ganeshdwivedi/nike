@@ -7,7 +7,7 @@ import { generateToken } from "@/config/generateToken";
 export async function POST(request) {
     await connect();
     try {
-        const { name, email, password, picture, isAdmin } = await request.json();
+        const { name, email, password, isAdmin } = await request.json();
         const user = await User.findOne({ email });
 
         if (user) {
@@ -27,7 +27,6 @@ export async function POST(request) {
             name,
             email,
             password: hashedPassword,
-            picture,
             isAdmin,
         });
 

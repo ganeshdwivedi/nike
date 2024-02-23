@@ -4,11 +4,14 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 
 function page() {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [visible,setVisible] = useState(false)
 
     const handleSubmit = async () => {
         toast("wait while we recognize user");
@@ -18,6 +21,7 @@ function page() {
                     email,
                     password,
                 });
+                console.log(response.status)
                 localStorage.setItem('token', response.data.token)
                 router.push("/cart");
             } else {
@@ -40,12 +44,12 @@ function page() {
                         </h1>
                         <div className="mb-[-15px] p-10 flex justify-center">
                             <form
-                                className="md:w-[37vw] rounded-md p-10 bg-black bg-opacity-10 backdrop-blur-[6px] sm:w-full"
+                                className="md:w-[37vw] rounded-[25px] p-10 bg-black bg-opacity-10 backdrop-blur-[6px] sm:w-full"
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                 }}
                             >
-                                <div className="flex justify-center flex-col items-center">
+                                <div className="flex justify-center flex-col  items-center">
                                     <p className="font-bold ">Login / Register</p>
                                     <hr className="h-[2px] w-full mt-4 mb-8 bg-gray-200 border-0 dark:bg-gray-700" />
                                 </div>
@@ -56,29 +60,36 @@ function page() {
                                     <div className="flex flex-col my-3">
                                         <label className="text-sm font-bold">Email</label>
                                         <input
+                                          style={{backgroundColor:'white'}}
                                             value={email}
                                             onChange={(e) => {
                                                 setEmail(e.target.value);
                                             }}
                                             required
-                                            className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
+                                            className="md:w-[35vw] rounded-[25px] sm:w-full px-4 py-3 border border-solid border-black"
                                             type="email"
                                             placeholder="Enter your Email"
                                         />
                                     </div>
                                     <div className="flex flex-col my-3 text-start">
                                         <label className="text-sm font-bold">password</label>
+                                        <div className="flex flex-row bg-white items-center py-[0.2rem] px-4 border border-solid border-black md:w-[35vw] rounded-[25px] sm:w-full">
                                         <input
+                                        style={{backgroundColor:'white'}}
                                             value={password}
                                             onChange={(e) => {
                                                 setPassword(e.target.value);
                                             }}
                                             required
                                             autoComplete="true"
-                                            className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                            type="password"
+                                            className="md:w-[95%] outline-none py-[0.6rem] border-none sm:w-full"
+                                            type={visible ? 'text' : 'password'}
                                             placeholder="Enter your password"
                                         />
+                                        <div onClick={()=>setVisible(!visible)}>
+                                        {visible ? <IoEyeOffOutline/> : <IoEyeOutline/>}
+                                        </div>
+                                        </div>
                                     </div>
 
                                     <button
@@ -91,13 +102,12 @@ function page() {
                                         By logging in, I confirm that I have read and accept the
                                         Terms and Conditionsand the Privacy Policy.
                                     </p>
-                                    <Link href={"/account/register"} className="self-start ">
-                                        Don't Have an account yet{" "}
-                                        <span className="text-lg font-bold underline">
-                                            Register Here
-                                        </span>
+                                    <div className="grid grid-cols-2">
+                                    <Link href={"/account/register"} >
+                                    Register Here
                                     </Link>
                                     <Link href={"/account/login/forget"}>forget password</Link>
+                                   </div>
                                 </div>
                             </form>
                         </div>

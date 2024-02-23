@@ -12,7 +12,7 @@ export async function POST(request) {
     try {
         const isExist = await User.findOne({ email: email });
         if (!isExist) {
-            return NextResponse.json({ message: "no such user find" })
+            return NextResponse.json({ message: "no such user find" },{ status: 400 })
         }
         const user = await User.findOne({ email: email });
         console.log(user);
@@ -22,13 +22,11 @@ export async function POST(request) {
             console.log("error in password");
             return NextResponse.json({ error: "Invalid password" }, { status: 400 });
         }
-
-
         return NextResponse.json({
             token: generateToken(
                 user.email
             )
-        });
+        },{ status: 200 });
 
     } catch (error) {
         console.error(error);
