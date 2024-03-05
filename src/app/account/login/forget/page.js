@@ -1,14 +1,10 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
-import Link from "next/link";
 import toast, { Toaster } from "react-hot-toast";
 
 function page() {
-    const router = useRouter();
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
     const handleSubmit = async () => {
         try {
@@ -47,12 +43,13 @@ function page() {
                                     <div className="flex flex-col my-3">
                                         <label className="text-sm font-bold">Email</label>
                                         <input
+                                          style={{backgroundColor:'white'}}
                                             value={email}
                                             onChange={(e) => {
-                                                setEmail(e.target.value);
+                                                setEmail(e.target.value)
                                             }}
                                             required
-                                            className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
+                                            className="md:w-[35vw] rounded-[25px] sm:w-full px-4 py-3 border border-solid border-black"
                                             type="email"
                                             placeholder="Enter your Email"
                                         />

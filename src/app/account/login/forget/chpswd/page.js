@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from 'next/navigation';
+import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 
 
 const page = (params) => {
     const [password, setPassword] = useState("");
     const [cfpassword, setCfPassword] = useState("");
+    const [visible,setVisible] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
@@ -54,30 +56,43 @@ const page = (params) => {
                                 <div className="flex flex-col justify-start items-center">
                                     <div className="flex flex-col my-3">
                                         <label className="text-sm font-bold">Password</label>
+                                        <div className="flex flex-row bg-white items-center py-[0.2rem] px-4 border border-solid border-black md:w-[35vw] rounded-[25px] sm:w-full">
                                         <input
+                                        style={{backgroundColor:'white'}}
                                             value={password}
                                             onChange={(e) => {
                                                 setPassword(e.target.value);
                                             }}
                                             required
-                                            className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                            type="Password"
-                                            placeholder="Enter your Password"
+                                            autoComplete="true"
+                                            className="md:w-[95%] outline-none py-[0.6rem] border-none sm:w-full"
+                                            type={visible ? 'text' : 'password'}
+                                            placeholder="Enter your password"
                                         />
+                                        <div onClick={()=>setVisible(!visible)}>
+                                        {visible ? <IoEyeOffOutline/> : <IoEyeOutline/>}
+                                        </div>
+                                        </div>
                                     </div>
                                     <div className="flex flex-col my-3 text-start">
                                         <label className="text-sm font-bold">Confirm Password</label>
+                                        <div className="flex flex-row bg-white items-center py-[0.2rem] px-4 border border-solid border-black md:w-[35vw] rounded-[25px] sm:w-full">
                                         <input
+                                        style={{backgroundColor:'white'}}
                                             value={cfpassword}
                                             onChange={(e) => {
                                                 setCfPassword(e.target.value);
                                             }}
                                             required
                                             autoComplete="true"
-                                            className="md:w-[35vw] sm:w-full px-4 py-3 border border-solid border-black"
-                                            type="password"
-                                            placeholder="Enter Confirm password"
+                                            className="md:w-[95%] outline-none py-[0.6rem] border-none sm:w-full"
+                                            type={visible ? 'text' : 'password'}
+                                            placeholder="Confirm password"
                                         />
+                                        <div onClick={()=>setVisible(!visible)}>
+                                        {visible ? <IoEyeOffOutline/> : <IoEyeOutline/>}
+                                        </div>
+                                        </div>
                                     </div>
 
                                     <button

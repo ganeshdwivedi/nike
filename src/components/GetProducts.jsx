@@ -51,7 +51,7 @@ function GetProducts({ category, props }) {
 
   return (
     <>
-      <div className="flex overflow-hidden justify-center md:flex-row flex-col sm:my-[4.5rem] my-10">
+      <div className="flex overflow-hidden justify-center md:flex-row flex-col sm:my-[4.5rem] my-10 md:px-10">
         <div className='w-[80vw] md:w-[25vw] mx-10 md:mx-0 flex-col flex items-start '>
           <p className="text-xl font-medium my-5">{product[0]?.category}'s Shoes({product?.length})</p>
           <div className="flex gap-x-5 text-base text-left font-medium flex-col ">

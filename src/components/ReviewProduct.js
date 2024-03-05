@@ -124,8 +124,10 @@ function ReviewProduct({ params }) {
               </div>
             </div>
           </div>
+          <div className="py-10">
           <RelatedProducts currentProductId={product?._id}
             shoeType={product?.shoeType} category={product?.category} />
+            </div>
         </div >
 
       ))
